@@ -82,11 +82,7 @@ The one in the example (`osp_csm.jar`) can be downloaded from here [An Introduct
 
 ​	
 
-​	
-
-
-
-|                                   |                                                              |
+| **File**                          | **Link**                                                     |
 | --------------------------------- | ------------------------------------------------------------ |
 | `osp_csm.jar`                     | [An Introduction To Computer Simulation Methods Examples](https://www.compadre.org/OSP/items/detail.cfm?ID=7154) |
 | `osp_guide.jar`                   | [OSP User's Guide Examples](https://www.compadre.org/osp/items/detail.cfm?ID=7153) |
