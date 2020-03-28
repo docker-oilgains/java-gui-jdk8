@@ -2,7 +2,7 @@
 
 ## Building a Java container that allows an X window
 
-We build our container based on an Oracle JDK-8 in Ubuntu 18.04. We add the user `developer` that will allows to set up an **X** session. We also install some X libraries such `libxext`, `libxrender`, `libxtst`. If these libraries are not installed the GUI will throw errors such as 
+We build our container based on an Oracle JDK-8 in **Ubuntu 18.04**. We add the user `developer` that will allows to set up an **X** session. We also install some X libraries such `libxext`, `libxrender`, `libxtst`. If these libraries are not installed the GUI will throw errors such as 
 
 ```
 Exception in thread "main" java.lang.UnsatisfiedLinkError: /opt/java-jdk/jdk1.8.0_231/jre/lib/amd64/libawt_xawt.so: libXrender.so.1: cannot open shared object file: No such file or directory
@@ -62,6 +62,19 @@ In this example, this line will run the `jar` file `osp_csm.jar`:
 docker run -ti --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v "$PWD":/app -w /app f0nzie/javaguijdk8:ubuntu18 java -jar osp_csm.jar
 ```
 
+or, in its more readable form:
+
+```
+docker run -ti --rm \
+	-e DISPLAY=$DISPLAY \
+	-v /tmp/.X11-unix:/tmp/.X11-unix \
+	-v "$PWD":/app -w /app \
+	f0nzie/javaguijdk8:ubuntu18 \
+	java -jar osp_csm.jar
+```
+
+
+
 This is a screenshot of the main application that contains dozens of computer simulation applications.
 
 ![image-20200327215845697](assets/README/image-20200327215845697.png)
@@ -73,6 +86,29 @@ This `docker run` line is different from the typical because it exposes an X win
 `-v /tmp/.X11-unix:/tmp/.X11-unix`: sets up a volume to allow a connection to the X session 
 
 `-v "$PWD":/app -w /app`: enables a volume to allocate the Java application
+
+
+
+## In Debian 10
+
+Build image with:
+
+```
+docker build --rm -f debian10.Dockerfile -t f0nzie/java-gui-jdk8:debian10 .
+```
+
+and run with:
+
+```
+docker run -ti --rm \
+	-e DISPLAY=$DISPLAY \
+	-v /tmp/.X11-unix:/tmp/.X11-unix \
+	-v "$PWD":/app -w /app \
+	f0nzie/java-gui-jdk8:debian10 \
+	java -jar osp_csm.jar
+```
+
+
 
 ## Open Source Physics simulations
 
