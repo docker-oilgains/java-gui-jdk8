@@ -89,7 +89,7 @@ This `docker run` line is different from the typical because it exposes an X win
 
 
 
-## In Debian 10
+## With Debian 10
 
 Build image with:
 
